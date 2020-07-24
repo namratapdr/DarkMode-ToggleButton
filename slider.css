@@ -1,0 +1,178 @@
+ @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+            body{
+                font-family: 'Roboto Mono', monospace;
+                background-color:#F1F5F8 ;
+                transition: ease-in;
+            }
+       
+        *{
+            box-sizing: border-box;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            top:7rem;
+        }
+        .slider-container {
+            display: grid;
+            place-items: center;
+            width: 90%;
+            height: 100px;
+            
+        }
+        .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        }
+
+        /* The slider */
+        .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #fff;
+        border: 1px solid  rgb(179, 176, 176);
+        
+        -webkit-transition: 1.5s;
+        transition: 1.5s;
+        animation-name: colorChange2 ;
+            animation-duration: 2s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes colorChange2 {
+            from {background-color: hsl(228, 22%, 36%);}
+            to {background-color: #fff;box-shadow: 3px  3px 5px grey;}
+        }
+
+        .slider .front::before {
+        position: absolute;
+        content: " 💡 ";
+        display: flex;
+        justify-content: center; /* align horizontal */
+        align-items: center;
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: #f2f5f9;
+        -webkit-transition: 1.5s;
+        transition: 1.5s;
+        }
+        .slider .front::before {
+           -webkit-animation: rotate-center 1s ease-in-out 0s both;
+	        animation: rotate-center 1s ease-in-out 0s both;
+        }
+      
+            @keyframes rotate-center {
+            0% {
+                -webkit-transform: rotate(0);
+                        transform: rotate(0);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                        transform: rotate(360deg);
+            }
+            }
+
+        input:checked + .slider {
+            animation-name: colorChange ;
+            animation-duration: 2s;
+            animation-delay: .5s;
+            animation-fill-mode: both;
+        }
+        @keyframes colorChange {
+            from {background-color: #fff;}
+            to {background-color: #2B3044;}
+        }
+        input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+        }
+        input:checked + .slider .front::before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+         content: '';
+         background-color: black;
+         background-image:url("./sic-mundus.svg") ;
+         background-repeat: no-repeat;
+         background-position: center;
+         background-size:cover;
+            display: flex;
+            justify-content: center; /* align horizontal */
+            align-items: center;
+            animation-name: spin ;
+            animation-duration: 1.5s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes spin {
+           
+            0% {transform: rotate(180deg);
+                
+                }
+            50% {
+                transform: scale(1.2);
+            }
+            
+        }
+        
+        /* Rounded sliders */
+        .slider.round {
+        border-radius: 34px;
+        }
+
+        .slider.round .front::before {
+        border-radius: 50%;
+        }
+        #text {
+            position: relative;
+            top: 2.5rem;
+        }
+        .light-mode {
+            animation-name: lightmode;
+             animation-duration: 2s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes lightmode {
+            from {
+                
+                 background-color: rgb(17, 16, 16);
+                 color: white;
+            }
+            to {
+                background-color: #F1F5F8;
+                color: black;
+            }
+           
+        }
+        .dark-mode {
+            animation-name: darkmode;
+             animation-duration: 2s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes darkmode {
+            from {
+                background-color: #F1F5F8;
+                color: black;
+            }
+            to {
+                 background-color: rgb(17, 16, 16);
+                 color: white;
+            }
+        }
